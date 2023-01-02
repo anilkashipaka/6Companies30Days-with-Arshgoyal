@@ -1,0 +1,25 @@
+class Solution {
+public:
+ vector<vector<int>> ans;
+    void dfs(vector<int> &temp,int k,int n, int start){
+     
+      if(temp.size()==k){
+          if(n==0) 
+          ans.push_back(temp);
+          return;
+      }
+      for(int j=start;j<=9;j++){
+          temp.push_back(j);
+          dfs(temp,k,n-j,j+1);
+          temp.pop_back();
+         
+      }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+       
+      vector<int> temp;
+      dfs(temp,k,n,1);
+        return ans;
+    }
+};
